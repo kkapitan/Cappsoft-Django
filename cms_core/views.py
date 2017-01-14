@@ -42,3 +42,7 @@ def post_edit(request, pk):
     else:
         form = PostForm(instance=post)
     return render(request, 'edit.html', {'form': form})
+
+
+def home(request):
+    return render(request, 'home.html', {})

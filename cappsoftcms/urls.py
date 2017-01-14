@@ -15,10 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from cms_core import views as core
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('registration.backends.simple.urls')),
-    url(r'', include('cms_core.urls')),
+    url(r'^blog/', include('cms_core.urls')),
+    url(r'^$', core.home, name="home"),
 ]
 
