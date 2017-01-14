@@ -15,8 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from cms_core import views as cms_core
 
 urlpatterns = [
+    url(r'^$', cms_core.index, name="index"),
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('registration.backends.simple.urls'))
 ]
+
