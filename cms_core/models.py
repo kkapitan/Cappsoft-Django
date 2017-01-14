@@ -13,9 +13,14 @@ class Post(models.Model):
     published_date = models.DateTimeField(
             blank=True, null=True)
 
-    def publish(self):
-        self.published_date = timezone.now()
-        self.save()
 
-    def __str__(self):
-        return self.title
+class Project(models.Model):
+    title = models.CharField(max_length=200)
+    client = models.CharField(max_length=200)
+    description = models.TextField()
+    service = models.ForeignKey('Service')
+    finished_date = models.DateTimeField(blank=True, null=True)
+
+
+class Service(models.Model):
+    name = models.CharField(max_length=200)
