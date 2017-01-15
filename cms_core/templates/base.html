@@ -25,6 +25,8 @@
 
 </head>
 
+{% url 'home' as home %}
+
 {% block body %}
     <body id="page-top" class="index">
     <!-- Navigation -->
@@ -45,16 +47,16 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#portfolio">Portfolio</a>
+                        <a href="{% ifnotequal request.path home %}{{ home }}{% endifnotequal %}#portfolio">Portfolio</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#about">About</a>
+                        <a href="{% ifnotequal request.path home %}{{ home }}{% endifnotequal %}#about">About</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#contact">Contact</a>
+                        <a href="{% ifnotequal request.path home %}{{ home }}{% endifnotequal %}#contact">Contact</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="{% url 'post_list' %}">Contact</a>
+                        <a href="{% url 'post_list' %}">Blog</a>
                     </li>
                 </ul>
             </div>
@@ -94,7 +96,7 @@
                     </div>
                     <div class="footer-col col-md-4">
                         <h3>The future is now.</h3>
-                        <p>Let's create amazing things together! Don't wait and <a href="#contact">contact us</a>.</p>
+                        <p>Let's create amazing things together! Don't wait and <a href="{% ifnotequal request.path home %}{{ home }}{% endifnotequal %}#contact">contact us</a>.</p>
                     </div>
                 </div>
             </div>
