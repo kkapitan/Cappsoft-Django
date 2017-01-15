@@ -65,6 +65,10 @@ section.post-odd {
     color: white;
 }
 
+div.post-footer {
+    padding: 50px;
+}
+
 div.content-wrapper {
     padding-top: 10px;
 }
