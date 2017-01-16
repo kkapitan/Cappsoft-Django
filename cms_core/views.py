@@ -7,12 +7,12 @@ from .forms import PostForm
 
 def post_list(request):
     posts = Post.objects.order_by('published_date')
-    return render(request, 'index.html', {"posts": posts})
+    return render(request, 'blog/index.html', {"posts": posts})
 
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    return render(request, 'show.html', {'post': post})
+    return render(request, 'blog/show.html', {'post': post})
 
 
 def post_new(request):
@@ -26,7 +26,7 @@ def post_new(request):
             return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm()
-    return render(request, 'new.html', {'form': form})
+    return render(request, 'blog/new.html', {'form': form})
 
 
 def post_edit(request, pk):
@@ -41,7 +41,7 @@ def post_edit(request, pk):
             return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm(instance=post)
-    return render(request, 'edit.html', {'form': form})
+    return render(request, 'blog/edit.html', {'form': form})
 
 
 def home(request):
