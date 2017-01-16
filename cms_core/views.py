@@ -50,7 +50,7 @@ def post_edit(request, pk):
     else:
         form = PostForm(instance=post)
 
-    return render(request, 'blog/edit.html', {'form': form})
+    return render(request, 'blog/edit.html', {'post': post})
 
 
 def home(request):
