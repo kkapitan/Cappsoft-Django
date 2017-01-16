@@ -3,33 +3,6 @@
 {% block content %}
     <section style="padding:50px;"></section>
 
-    <section id="{{ post.id }}" class="post-even">
-        <div class="container">
-
-            {% ifequal request.user.id post.author.id %}
-                <div class="row">
-                    <div class="col-xs-2 col-xs-offset-10">
-                        <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-                    </div>
-                </div>
-            {% endifequal %}
-
-            <div class="row">
-
-                <div class="col-lg-12 text-center">
-                    <h2>{{ post.title }}</h2>
-                    <hr class="star-primary">
-                    <p>{{ post.text|linebreaksbr }}</p>
-                </div>
-
-            </div>
-            <div class="row">
-                    <div class="col-lg-12 text-center post-footer">
-                        <p>Written by: <a href="{% url 'user_detail' pk=post.author.id %}"><strong>{{ post.author.username }}</strong></a> on <em>{{ post.published_date }}</em></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    {% include 'blog/partials/post_details.html' with post=post %}
 
 {% endblock %}

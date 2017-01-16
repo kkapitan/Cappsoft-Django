@@ -3,17 +3,6 @@
 {% block content %}
         <section style="padding:50px;"></section>
         {% for post in posts %}
-            <section id="{{ post.id }}" class="{% if forloop.counter0|divisibleby:2 %}post-even{% else %}post-odd{% endif %}">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12 text-center">
-                            <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
-                            <hr class="{% if forloop.counter0|divisibleby:2 %}star-primary{% else %}star-light{% endif %}">
-                            <p>{{ post.text|linebreaksbr }}</p>
-                            <p>Written by: <a href="{% url 'user_detail' pk=post.author.id %}"><strong>{{ post.author.username }}</strong></a> on <em>{{ post.published_date }}</em></p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            {% include "blog/partials/post_simple.html" with post=post %}
         {% endfor %}
 {% endblock %}
