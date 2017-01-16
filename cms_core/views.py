@@ -74,4 +74,4 @@ def user_detail(request, pk):
 
 class MyRegistrationView(RegistrationView):
     def get_success_url(self, user):
-        return "/blog"
+        return "/blog/users/" + str(user.id)
