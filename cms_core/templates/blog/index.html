@@ -10,7 +10,7 @@
                             <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
                             <hr class="{% if forloop.counter0|divisibleby:2 %}star-primary{% else %}star-light{% endif %}">
                             <p>{{ post.text|linebreaksbr }}</p>
-                            <p>Written by: <strong>{{ post.author.username }}</strong> on <em>{{ post.published_date }}</em></p>
+                            <p>Written by: <a href="{% url 'user_detail' pk=post.author.id %}"><strong>{{ post.author.username }}</strong></a> on <em>{{ post.published_date }}</em></p>
                         </div>
                     </div>
                 </div>

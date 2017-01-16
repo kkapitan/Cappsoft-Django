@@ -25,7 +25,7 @@
             </div>
             <div class="row">
                     <div class="col-lg-12 text-center post-footer">
-                        <p>Written by: <strong>{{ post.author.username }}</strong> on <em>{{ post.published_date }}</em></p>
+                        <p>Written by: <a href="{% url 'user_detail' pk=post.author.id %}"><strong>{{ post.author.username }}</strong></a> on <em>{{ post.published_date }}</em></p>
                     </div>
                 </div>
             </div>
