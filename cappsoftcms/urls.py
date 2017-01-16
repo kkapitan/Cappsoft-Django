@@ -20,6 +20,7 @@ from cms_core import views as core
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('registration.backends.simple.urls')),
+    url(r'^register/$', core.MyRegistrationView.as_view(), name='registration_register'),
     url(r'^blog/', include('cms_core.urls')),
     url(r'^$', core.home, name="home"),
 ]

@@ -1,9 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.contrib.auth.models import User
+from registration.backends.simple.views import RegistrationView
 
 from .models import Post, Project
 from .forms import PostForm
+
 
 
 def post_list(request):
@@ -68,3 +70,8 @@ def user_detail(request, pk):
     posts = Post.objects.filter(author_id=user.id)
 
     return render(request, 'users/show.html', {'user': user, 'posts': posts})
+
+
+class MyRegistrationView(RegistrationView):
+    def get_success_url(self, user):
+        return "/blog"
