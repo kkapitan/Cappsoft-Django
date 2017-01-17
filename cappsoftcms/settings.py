@@ -47,7 +47,6 @@ SOCIAL_AUTH_TWITTER_KEY = '9zvURdwFtbzsX9haeIP2JKdrH'
 SOCIAL_AUTH_TWITTER_SECRET = 'Gs4TBiCDEBj67SCWn2mbZbiQjn9HQzyZIvP2Kb64kw1UjSkwr3'
 
 
-
 REGISTRATION_OPEN = True  # If True, users can register
 ACCOUNT_ACTIVATION_DAYS = 7  # One-week activation window; you may, of course, use a different value.
 REGISTRATION_AUTO_LOGIN = True  # If True, the user will be automatically logged in.

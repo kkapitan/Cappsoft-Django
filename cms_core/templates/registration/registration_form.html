@@ -12,7 +12,23 @@
                     <div class="panel-body" >
                         <form id="signupform" class="form-horizontal" role="form" method="post" action="">
                             {% csrf_token %}
+                            {% if form.errors %}
+                                <div id="signupalert" class="alert alert-danger">
+                                    <ul>
+                                        {% for error in form.non_field_errors %}
+                                            <li><strong>{{ error|escape }}</strong></li>
+                                        {% endfor %}
 
+                                        {% for error in form.email.errors %}
+                                            <li><strong>{{ error|escape }}</strong></li>
+                                        {% endfor %}
+
+                                        {% for error in form.password2.errors %}
+                                            <li><strong>{{ error|escape }}</strong></li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            {% endif %}
                             <div id="signupalert" style="display:none" class="alert alert-danger">
                                 <p>Error:</p>
                                 <span></span>
