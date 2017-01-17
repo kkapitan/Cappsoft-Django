@@ -1,7 +1,20 @@
 {% extends "base.html" %}
-
+{% load staticfiles %}
 {% block content %}
-        <section style="padding:50px;"></section>
+        <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <img class="img-responsive" src="{% static 'img/profile.png' %}" alt="">
+                    <div class="intro-text">
+                        <span class="name">{{ user.username }}</span>
+                        <hr class="star-light">
+                        <span class="skills">Member since: {{ user.date_joined }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </header>
         {% for post in posts %}
             {% include "blog/partials/post_simple.html" with post=post %}
         {% endfor %}
