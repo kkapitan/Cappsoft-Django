@@ -25,7 +25,7 @@ SECRET_KEY = '^$7q8a!$2xo6i6w$7)#ri9tjhenh4pyi%f$&65rs#4f8tzs0=r'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['myapp.com']
 
 
 # Application definition
@@ -40,7 +40,13 @@ INSTALLED_APPS = [
     'bootstrap3',
     'cms_core',
     'registration',
+    'social_django',
 ]
+
+SOCIAL_AUTH_TWITTER_KEY = '9zvURdwFtbzsX9haeIP2JKdrH'
+SOCIAL_AUTH_TWITTER_SECRET = 'Gs4TBiCDEBj67SCWn2mbZbiQjn9HQzyZIvP2Kb64kw1UjSkwr3'
+
+
 
 REGISTRATION_OPEN = True  # If True, users can register
 ACCOUNT_ACTIVATION_DAYS = 7  # One-week activation window; you may, of course, use a different value.
@@ -56,9 +62,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'cappsoftcms.urls'
+
+SOCIAL_AUTH_USER_MODEL = 'auth.User'
 
 TEMPLATES = [
     {
@@ -71,6 +80,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -78,6 +89,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'cappsoftcms.wsgi.application'
 
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.twitter.TwitterOAuth',
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
@@ -131,3 +147,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
+
+#SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'first_name', 'email']

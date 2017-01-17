@@ -23,5 +23,6 @@ urlpatterns = [
     url(r'^register/$', core.MyRegistrationView.as_view(), name='registration_register'),
     url(r'^blog/', include('cms_core.urls')),
     url(r'^$', core.home, name="home"),
+    url(r'^social/', include('social_django.urls')),
 ]
 
